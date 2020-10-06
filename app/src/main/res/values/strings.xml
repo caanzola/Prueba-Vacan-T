@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Prueba Vacan-T</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="info">Registro</string>
+    <string name="register">Registrarme</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="email">Correo</string>
+    <string name="cellphone">Número de celular</string>
+    <string name="id_type">Tipo de identificación</string>
+    <string name="id_number">Número de identificación</string>
+    <string-array name="id_type_array">
+        <item>C.C.</item>
+        <item>T.I.</item>
+        <item>C.E.</item>
+    </string-array>
+</resources>
