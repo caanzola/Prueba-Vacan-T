@@ -14,13 +14,23 @@ import com.example.pruebavacan_t.HomePage.HomeActivity
 import java.net.HttpURLConnection
 import java.net.URL
 import android.os.AsyncTask.execute
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Build
 import androidx.annotation.RequiresApi
 import java.io.IOException
+import org.json.JSONObject
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.io.DataOutputStream
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 
 class idRegister: AppCompatActivity() {
@@ -50,6 +60,23 @@ class idRegister: AppCompatActivity() {
 
                     with(url.openConnection() as HttpURLConnection) {
                         requestMethod = "POST"
+                        var connection = url.openConnection() as HttpURLConnection
+                        connection.requestMethod = "POST"
+                        val wr = DataOutputStream(connection.outputStream)
+
+
+                        val jsonParam = JSONObject()
+                        jsonParam.put("nombres", name)
+                        jsonParam.put("apellidos", lastname)
+                        jsonParam.put("correo", email)
+                        jsonParam.put("password", pass)
+                        jsonParam.put("telefonoMovil", phone)
+                        jsonParam.put("tipoDocumento", type)
+                        jsonParam.put("numeroIdentificacion", numId)
+
+                        wr.writeBytes(jsonParam.toString())
+                        wr.flush()
+                        wr.close()
 
                         println("\nResponse Code : $responseCode")
 
